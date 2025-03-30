@@ -21,8 +21,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # חשוף את הפורט
 EXPOSE 8000
 
-# הגדר בדיקת בריאות עבור Koyeb
-HEALTHCHECK --test=nc -z 0.0.0.0:$PORT --timeout=10s
+# בדיקת בריאות עבור Koyeb (תחביר חלופי)
+HEALTHCHECK CMD nc -z 0.0.0.0:$PORT || exit 1
 
 # הפעל את היישום
 CMD ["python", "app.py"]
