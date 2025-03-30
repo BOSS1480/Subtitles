@@ -316,7 +316,7 @@ async def handle_subtitles_download(client, message, filename, download_link, st
         await status_msg.edit_text("הורדה הושלמה, מפיק כתוביות...")
 
         # הפעלת ffmpeg להפקת כתוביות (לולאה להפקת כל סוגי הכתוביות)
-        for i in range(10):  # מקסימום 10 ניסיונות, ניתן לשנות
+        for i in range(20):  # מקסימום 20 ניסיונות, ניתן לשנות
             srt_path = f"downloads/{base_filename}_{i}.srt" # Removed user_id
             ffmpeg_cmd = ["ffmpeg", "-i", file_path, "-map", f"0:s:{i}", srt_path, "-y"]
             proc = subprocess.run(ffmpeg_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
